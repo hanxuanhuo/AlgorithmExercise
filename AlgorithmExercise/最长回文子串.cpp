@@ -39,6 +39,9 @@ string longestPalindrome(string s)
 		if (s[i] == s[i + 1])
 		{
 			dp[i][i + 1] = 1;
+			//max = 2的情况也要计算
+			max = 2;
+			start = i;
 		}
 		else
 		{
@@ -52,9 +55,10 @@ string longestPalindrome(string s)
 		for (int j = i + 2; j < n; j++)
 		{
 			dp[i][j] = (int)(dp[i + 1][j - 1] && (s[i] == s[j]));
-			if (dp[i][j])
+			//更新起始位置只在max更新的时候发生
+			if (dp[i][j] && (max < (j-i+1)))
 			{
-				max = max < (j - i + 1) ? (j - i + 1) : max;
+				max = j - i + 1;
 				start = i;
 			}
 		}
