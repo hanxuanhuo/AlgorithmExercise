@@ -1,17 +1,19 @@
 #include <iostream>
 #include <string>
+#include <stdio.h>
 
 using namespace std;
 
-string longestPalindrome(string s);
+struct ListNode {
+	int val;
+	ListNode *next;
+	ListNode(int x) :val(x), next(NULL) {}
+};
+ListNode * mergeTowLists(ListNode *l1, ListNode *l2);
 
 int main()
 {
-	string str = "babad";
-	string ans;
-	ans = longestPalindrome(str);
-	cout << ans << endl;
-
+	
 	cin.get();
 	return 0;
 }

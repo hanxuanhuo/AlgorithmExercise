@@ -19,6 +19,7 @@ string longestPalindrome(string s)
 {
 	int dp[100][100] = {0};//VS调试使用dp[1001][1001]堆溢出，减小数组大小可以运行
 	int max = 1;//顺便储存最长回文子串的长度
+	int start;
 	string ans = "";
 	
 	//先检查字符串长度
@@ -49,7 +50,6 @@ string longestPalindrome(string s)
 		}
 	}
 
-	int start = 0;//记录最长子串的起始下标
 	for (int i = n - 3; i >= 0; i--)
 	{
 		for (int j = i + 2; j < n; j++)
