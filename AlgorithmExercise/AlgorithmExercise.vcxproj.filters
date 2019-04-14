@@ -30,5 +30,8 @@
     <ClCompile Include="机器人走格子1_N.cpp">
       <Filter>源文件</Filter>
     </ClCompile>
+    <ClCompile Include="感染的最短次数.cpp">
+      <Filter>源文件</Filter>
+    </ClCompile>
   </ItemGroup>
 </Project>

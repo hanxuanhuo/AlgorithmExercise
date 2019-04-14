@@ -2,10 +2,10 @@
 
 using namespace std;
 
-void minimumEnergy();
+void leastInfectTimes();
 int main()
 {
-	minimumEnergy();
+	leastInfectTimes();
 	system("pause");
 	return 0;
 }
