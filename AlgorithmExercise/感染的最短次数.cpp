@@ -7,24 +7,16 @@ using namespace std;
 2会感染自己的上下左右的1，求最少的感染次数
 */
 
+int loc[4][2] = { {0, -1}, {-1, 0}, {0, 1}, {1, 0} };
 int infectRange(int a[][100], int x, int y, int n, int m)
 {
 	int count = 0;
-	if (y - 1 >= 0 && a[x][y - 1] == 1)
+	for (int i = 0;i < 4; i++)
 	{
-		count++;
-	}
-	if (x - 1 >= 0 && a[x - 1][y] == 1)
-	{
-		count++;
-	}
-	if (y + 1 < m && a[x][y + 1] == 1)
-	{
-		count++;
-	}
-	if (x + 1 < n && a[x + 1][y] == 1)
-	{
-		count++;
+		int new_x = x + loc[i][0];
+		int new_y = y + loc[i][1];
+		if (new_x >= 0 && new_x < n && new_y >= 0 && new_y < m && a[new_x][new_y] == 1)
+			count++;
 	}
 	return count;
 }
@@ -32,55 +24,28 @@ int infectRange(int a[][100], int x, int y, int n, int m)
 int infect(int a[][100], int x, int y, int n, int m)
 {
 	int left = 0, up = 0, right = 0, down = 0;
-	int max_range = 0;//left 1 up 2 right 3 down 4
-	int max_range_mark = 1;
+	int max_range = 0;//left 0 up 1 right 2 down 3
+	int max_range_mark = 0;
 	int range = 0;
 	if (y - 1 >= 0 && a[x][y - 1] == 1)
 	{
 		a[x][y - 1] = 2;
-		left = 1;
-		range = infectRange(a, x, y - 1, n, m);
-		if (range > max_range)
-		{
-			max_range = range;
-			max_range_mark = 1;
-		}
-		
+		left = 1;	
 	}
 	if (x - 1 >= 0 && a[x - 1][y] == 1)
 	{
 		a[x - 1][y] = 2;
 		up = 1;
-		range = infectRange(a, x-1, y, n, m);
-		if (range > max_range)
-		{
-			max_range = range;
-			max_range_mark = 2;
-		}
-		
 	}
 	if (y + 1 < m && a[x][y + 1] == 1)
 	{
 		a[x][y + 1] = 2;
 		right = 1;
-		range = infectRange(a, x, y + 1, n, m);
-		if (range > max_range)
-		{
-			max_range = range;
-			max_range_mark = 3;
-		}
-		
 	}
 	if (x + 1 < n && a[x + 1][y] == 1)
 	{
 		a[x + 1][y] = 2;
 		down = 1;
-		range = infectRange(a, x+1, y, n, m);
-		if (range > max_range)
-		{
-			max_range = range;
-			max_range_mark = 4;
-		}
 		
 	}
 	if (left == 0 && up == 0 && right == 0 && down == 0)
@@ -88,86 +53,21 @@ int infect(int a[][100], int x, int y, int n, int m)
 		return 0;
 	}
 	int count = 0;
-	//判断哪一个是周边可感染点数最大的，就从哪一个点开始循环走路径
-	if (max_range_mark == 1)
+	//每次从还没有感染的点里选一个能感染的数量最多的
+	for (int k = 0; k < 4; k++)
 	{
-		if (y - 1 >= 0 && left == 1)
+		for (int i = 0; i < 4; i++)
 		{
-			count += infect(a, x, y - 1, n, m);
+			range = infectRange(a, x + loc[i][0], y + loc[i][1], n, m);
+			if (range > max_range)
+			{
+				max_range = range;
+				max_range_mark = i;
+			}
 		}
-		if (x - 1 >= 0 && up == 1)
-		{
-			count += infect(a, x-1, y, n, m);
-		}
-		if (y + 1 < m && right == 1)
-		{
-			count += infect(a, x, y + 1, n, m);
-		}
-		if (x + 1 < n && down == 1)
-		{
-			count += infect(a, x+1, y, n, m);
-		}
+		count += infect(a, x + loc[max_range_mark][0], y + loc[max_range_mark][1], n, m);
 	}
-	if (max_range_mark == 2)
-	{
-		
-		if (x - 1 >= 0 && up == 1)
-		{
-			count += infect(a, x - 1, y, n, m);
-		}
-		if (y + 1 < m && right == 1)
-		{
-			count += infect(a, x, y + 1, n, m);
-		}
-		if (x + 1 < n && down == 1)
-		{
-			count += infect(a, x + 1, y, n, m);
-		}
-		if (y - 1 >= 0 && left == 1)
-		{
-			count += infect(a, x, y - 1, n, m);
-		}
-	}
-	if (max_range_mark == 3)
-	{
-		
-		if (y + 1 < m && right == 1)
-		{
-			count += infect(a, x, y + 1, n, m);
-		}
-		if (x + 1 < n && down == 1)
-		{
-			count += infect(a, x + 1, y, n, m);
-		}
-		if (y - 1 >= 0 && left == 1)
-		{
-			count += infect(a, x, y - 1, n, m);
-		}
-		if (x - 1 >= 0 && up == 1)
-		{
-			count += infect(a, x - 1, y, n, m);
-		}
-	}
-	if (max_range_mark == 4)
-	{
-		
-		if (x + 1 < n && down == 1)
-		{
-			count += infect(a, x + 1, y, n, m);
-		}
-		if (y - 1 >= 0 && left == 1)
-		{
-			count += infect(a, x, y - 1, n, m);
-		}
-		if (x - 1 >= 0 && up == 1)
-		{
-			count += infect(a, x - 1, y, n, m);
-		}
-		if (y + 1 < m && right == 1)
-		{
-			count += infect(a, x, y + 1, n, m);
-		}
-	}
+
 	cout << "x: " << x << " y: " << y << endl;
 	cout << count + 1 << endl;
 
