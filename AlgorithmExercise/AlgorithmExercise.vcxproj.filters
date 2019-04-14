@@ -27,5 +27,8 @@
     <ClCompile Include="有序链表拼接.cpp">
       <Filter>源文件</Filter>
     </ClCompile>
+    <ClCompile Include="机器人走格子1_N.cpp">
+      <Filter>源文件</Filter>
+    </ClCompile>
   </ItemGroup>
 </Project>
