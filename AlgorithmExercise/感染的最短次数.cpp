@@ -103,6 +103,8 @@ void leastInfectTimes()
 	//这里有所不同，在在线编程的网站上直接使用这个方法可以读入不定长的矩阵
 	//但是在VS下因为结尾EOF必须换行，则得到的n要比实际上大1
 	n--;
+	//两种额外的情况，没有2，没有1
+
 	int count = 0;
 	for (int i = 0; i < n; i++)
 	{
@@ -126,5 +128,5 @@ void leastInfectTimes()
 	} 
 
 	cout << "最少的步数" << count << endl;
-
+	return;
 }

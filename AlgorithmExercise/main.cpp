@@ -2,10 +2,10 @@
 
 using namespace std;
 
-void leastInfectTimes();
+void replaceSpace();
 int main()
 {
-	leastInfectTimes();
+	replaceSpace();
 	system("pause");
 	return 0;
 }
