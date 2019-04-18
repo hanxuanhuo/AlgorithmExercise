@@ -21,9 +21,11 @@
   <ItemGroup>
     <ClCompile Include="main.cpp" />
     <ClCompile Include="二维数组查找.cpp" />
+    <ClCompile Include="先序中序后序数组两两结合重构二叉树.cpp" />
     <ClCompile Include="寻找两个有序数组的中位数.cpp" />
     <ClCompile Include="感染的最短次数.cpp" />
     <ClCompile Include="替换空格.cpp" />
+    <ClCompile Include="最佳股票买入时机.cpp" />
     <ClCompile Include="最长回文子串.cpp" />
     <ClCompile Include="有序链表拼接.cpp" />
     <ClCompile Include="机器人走格子1_N.cpp" />

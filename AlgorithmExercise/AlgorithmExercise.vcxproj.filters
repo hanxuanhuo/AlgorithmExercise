@@ -39,5 +39,11 @@
     <ClCompile Include="替换空格.cpp">
       <Filter>源文件</Filter>
     </ClCompile>
+    <ClCompile Include="先序中序后序数组两两结合重构二叉树.cpp">
+      <Filter>源文件</Filter>
+    </ClCompile>
+    <ClCompile Include="最佳股票买入时机.cpp">
+      <Filter>源文件</Filter>
+    </ClCompile>
   </ItemGroup>
 </Project>

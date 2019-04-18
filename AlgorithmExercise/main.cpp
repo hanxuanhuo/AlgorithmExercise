@@ -1,11 +1,13 @@
 #include <iostream>
+#include <vector>
 
 using namespace std;
 
-void replaceSpace();
+void main_maxProfit();
+int maxProfit(vector<int> &prices);
 int main()
 {
-	replaceSpace();
+	main_maxProfit();
 	system("pause");
 	return 0;
 }
