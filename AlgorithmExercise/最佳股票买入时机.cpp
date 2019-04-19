@@ -19,6 +19,7 @@ using namespace std;
 int maxProfit(vector<int> &prices);
 int maxProfit2(vector<int> &prices);
 int maxProfit3(vector<int> &prices);
+int maxProfit4(vector<int> &prices);
 void main_maxProfit()
 {
 	vector<int> prices;
@@ -28,7 +29,7 @@ void main_maxProfit()
 		prices.push_back(price);
 	}
 
-	cout << maxProfit3(prices) << endl;
+	cout << maxProfit4(prices) << endl;
 	return;
 }
 
@@ -97,6 +98,7 @@ int maxProfit2(vector<int> &prices)
 
 /*
 峰谷  峰-谷
+可以尽可能多的完成交易
 */
 int maxProfit3(vector<int> &prices)
 {
@@ -126,4 +128,74 @@ int maxProfit3(vector<int> &prices)
 	if(peak != 0)
 		maxprofit += peak - valley;
 	return maxprofit;
+}
+
+/*
+给定一个数组，它的第 i 个元素是一支给定的股票在第 i 天的价格。
+
+设计一个算法来计算你所能获取的最大利润。你最多可以完成 两笔 交易。
+*/
+//暴力解法
+int maxProfit4_assis(vector<int> &prices, int start, int end)
+{
+	int valley = INT_MAX;
+	int maxprofit = 0;
+	for (int i = start; i < end; i++)
+	{
+		if (prices[i] < valley)
+		{
+			valley = prices[i];
+		}
+		else if (prices[i] - valley > maxprofit)
+		{
+			maxprofit = prices[i] - valley;
+		}
+	}
+	return maxprofit;
+}
+
+int maxProfit4(vector<int> &prices)
+{
+	if (prices.size() < 2)
+		return 0;
+	int maxprofit1 = 0;
+	int maxprofit2 = 0;
+	maxprofit1 = maxProfit4_assis(prices, 0, prices.size());
+
+	for (int i = 2; i < prices.size() - 1; i++)
+	{ 
+		int profit = maxProfit4_assis(prices, 0, i) + maxProfit4_assis(prices, i, prices.size());
+		maxprofit2 = profit > maxprofit2 ? profit : maxprofit2;
+	}
+	return maxprofit1 > maxprofit2 ? maxprofit1 : maxprofit2;
+}
+
+/*
+牛逼
+考虑 到该天为止第一次买入获得的最大收益（这个受益的当天结算的，买入就是-的）
+     到该天为止第一次卖出获得的最大收益
+	 到该天为止第二次买入获得的最大收益
+	 到该天为止第二次卖出获得的最大收益
+更新
+	如果当天第一次买入比之前获得收益更大，则更新
+	如果当天第一次卖出比之前获得的收益更大，则更新
+	同理
+
+	因此考虑的是遍历历史最大收益
+*/
+int maxprofit5(vector<int> &prices)
+{
+	int fstbuy = INT_MIN;
+	int fstsell = 0;
+	int secbuy = INT_MIN;
+	int secsell = 0;
+
+	for (int i = 0; i < prices.size(); i++)
+	{
+		fstbuy = fstbuy > -prices[i] ? fstbuy : -prices[i];
+		fstsell = fstsell > fstbuy + prices[i] ? fstsell : fstbuy + prices[i];
+		secbuy = secbuy > fstsell - prices[i] ? secbuy : fstsell - prices[i];
+		secsell = secsell > secbuy + prices[i] ? secsell : secbuy + prices[i];
+	}
+	return secsell;
 }
