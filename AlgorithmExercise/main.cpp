@@ -1,13 +1,16 @@
 #include <iostream>
 #include <vector>
+#include <algorithm>
+#include <string>
+#include <queue>
 
 using namespace std;
 
-void main_maxProfit();
-int maxProfit(vector<int> &prices);
+void numSquares_main();
 int main()
 {
-	main_maxProfit();
+	numSquares_main();
+
 	system("pause");
 	return 0;
 }

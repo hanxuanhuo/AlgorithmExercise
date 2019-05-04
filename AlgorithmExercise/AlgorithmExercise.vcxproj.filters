@@ -45,5 +45,20 @@
     <ClCompile Include="最佳股票买入时机.cpp">
       <Filter>源文件</Filter>
     </ClCompile>
+    <ClCompile Include="堆.cpp">
+      <Filter>源文件</Filter>
+    </ClCompile>
+    <ClCompile Include="归并排序.cpp">
+      <Filter>源文件</Filter>
+    </ClCompile>
+    <ClCompile Include="数组置零.cpp">
+      <Filter>源文件</Filter>
+    </ClCompile>
+    <ClCompile Include="遍历二叉树.cpp">
+      <Filter>源文件</Filter>
+    </ClCompile>
+    <ClCompile Include="完全平方数.cpp">
+      <Filter>源文件</Filter>
+    </ClCompile>
   </ItemGroup>
 </Project>
