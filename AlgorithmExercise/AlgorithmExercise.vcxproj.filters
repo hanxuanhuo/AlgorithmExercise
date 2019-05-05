@@ -60,5 +60,11 @@
     <ClCompile Include="完全平方数.cpp">
       <Filter>源文件</Filter>
     </ClCompile>
+    <ClCompile Include="逆波兰表达式.cpp">
+      <Filter>源文件</Filter>
+    </ClCompile>
+    <ClCompile Include="克隆图.cpp">
+      <Filter>源文件</Filter>
+    </ClCompile>
   </ItemGroup>
 </Project>

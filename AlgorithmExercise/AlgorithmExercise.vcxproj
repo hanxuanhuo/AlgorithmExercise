@@ -22,6 +22,7 @@
     <ClCompile Include="main.cpp" />
     <ClCompile Include="二维数组查找.cpp" />
     <ClCompile Include="先序中序后序数组两两结合重构二叉树.cpp" />
+    <ClCompile Include="克隆图.cpp" />
     <ClCompile Include="堆.cpp" />
     <ClCompile Include="完全平方数.cpp" />
     <ClCompile Include="寻找两个有序数组的中位数.cpp" />
@@ -33,6 +34,7 @@
     <ClCompile Include="最长回文子串.cpp" />
     <ClCompile Include="有序链表拼接.cpp" />
     <ClCompile Include="机器人走格子1_N.cpp" />
+    <ClCompile Include="逆波兰表达式.cpp" />
     <ClCompile Include="遍历二叉树.cpp" />
   </ItemGroup>
   <PropertyGroup Label="Globals">

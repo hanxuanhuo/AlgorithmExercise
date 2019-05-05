@@ -6,10 +6,10 @@
 
 using namespace std;
 
-void numSquares_main();
+void cloneGraph_main();
 int main()
 {
-	numSquares_main();
+	cloneGraph_main();
 
 	system("pause");
 	return 0;
